@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stock Comparison Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    </head>
+    <body>
+        <div class="page">
+            <header>
+                <h1>Stock Comparison Dashboard</h1>
+                <p>Compare stock prices, moving averages, volatility, and drawdowns.</p>
+            </header>
+
+            <section class="card">
+                <div class="controls">
+                    <label for="companies">
+                        Company names or tickers
+                        <input type="text" id="companies" placeholder="Apple, Microsoft, Google", autocomplete="off">
+                    </label>
+                    <div class="dates">
+                        <label for="start">
+                            Start date
+                            <input type="date" id="start">
+                        </label>
+                        <label for="end">
+                            End date
+                            <input type="date" id="end">
+                        </label>
+                    </div> 
+                </div>
+                <div class="button-row">
+                    <button id="compare-button" class="primary">
+                        Compare stocks
+                    </button>
+                    <button id="save-button" class="secondary">
+                        Save comparison
+                    </button>
+                    <button id="delete-button" class="danger">
+                        Delete selected comparison
+                    </button>
+                </div>
+                <div class="divider"></div>
+                <label for="saved-comparisons">
+                    Saved comparisons
+                    <select id="saved-comparisons">
+                        <option value="">Select a saved comparison</option>
+                    </select>
+                </label>
+            </section>
+
+            <section id="results" class="hidden">
+                <div class="info-row">
+                    <div class="info">
+                        <span class="label">Selected tickers</span>
+                        <span id="selected-tickers"></span>
+                    </div>
+                    <div class="info">
+                        <span class="label">Start date</span>
+                        <span id="selected-start"></span>
+                    </div>
+                    <div class="info">
+                        <span class="label">End date</span>
+                        <span id="selected-end"></span>
+                    </div>
+                </div>
+
+                <div class="charts">
+                    <div class="chart-card">
+                        <h2>Closing prices</h2>
+                        <div id="closing-prices-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h2>20-day moving average</h2>
+                        <div id="ma20-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h2>50-day moving average</h2>
+                        <div id="ma50-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h2>Normalized performance</h2>
+                        <div id="normalized-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h2>Volatility</h2>
+                        <div id="volatility-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h2>Drawdown</h2>
+                        <div id="drawdown-chart" class="chart"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
